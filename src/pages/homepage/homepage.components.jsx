@@ -7,6 +7,6 @@ const HomePage = () => (
         <div className='homepage__image'>
         </div>
     </div>
-)
+);
 
 export default HomePage;

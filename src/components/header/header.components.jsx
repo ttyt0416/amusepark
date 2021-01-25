@@ -4,11 +4,6 @@ import './header.style.scss';
 import { Link } from 'react-router-dom';
 
 
-import SignInButton from '../signinbutton/signinbutton.components';
-
-
-import SignInPage from '../../pages/signinpage/signinpage.components';
-import SignUpPage from '../../pages/signuppage/signuppage.components';
 
 const Header = () => {
     return (
@@ -32,10 +27,7 @@ const Header = () => {
             </div>
             <div className='header-right'>
                 <div className='header-right__option'>
-                    <SignInButton />
-                </div>
-                <div className='header-right__option'>
-                    <SignInButton onClick={() => SignInPage.isOpen = true} />
+                    로그인
                 </div>
             </div>
         </div>

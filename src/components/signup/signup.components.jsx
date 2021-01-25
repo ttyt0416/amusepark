@@ -2,7 +2,7 @@ import React from 'react';
 
 import './signuppage.style.scss';
 
-class SignUpPage extends React.Component {
+class SignUp extends React.Component {
     render() {
         return(
             <div class='signup'>
@@ -12,4 +12,4 @@ class SignUpPage extends React.Component {
     }
 }
 
-export default SignUpPage;
+export default SignUp;

@@ -3,6 +3,13 @@ import './header.style.scss';
 
 import { Link } from 'react-router-dom';
 
+
+import SignInButton from '../signinbutton/signinbutton.components';
+
+
+import SignInPage from '../../pages/signinpage/signinpage.components';
+import SignUpPage from '../../pages/signuppage/signuppage.components';
+
 const Header = () => {
     return (
         <div className='header'>
@@ -25,10 +32,10 @@ const Header = () => {
             </div>
             <div className='header-right'>
                 <div className='header-right__option'>
-                    회원가입
+                    <SignInButton />
                 </div>
                 <div className='header-right__option'>
-                    로그인
+                    <SignInButton onClick={() => SignInPage.isOpen = true} />
                 </div>
             </div>
         </div>

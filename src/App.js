@@ -23,7 +23,7 @@ class App extends React.Component {
         <Footer />
       </div>
     );
-  }
+  };
 }
 
 export default App;

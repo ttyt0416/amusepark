@@ -1,11 +1,19 @@
 import React from 'react';
 import './header.style.scss';
 
+import { auth } from '../../firebase/firebase.utility';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+import { setCurrentUser } from '../../redux/user/user.actions';
+
 import { Link } from 'react-router-dom';
 
 
 
-const Header = () => {
+const Header = ({ currentUser }) => {
     return (
         <div className='header'>
             <div className='header-left'>
@@ -26,12 +34,20 @@ const Header = () => {
                 </Link>
             </div>
             <div className='header-right'>
-                <div className='header-right__option'>
-                    로그인
-                </div>
+                {
+                    currentUser ?
+                    <div className='header-right__option' onClick={() => auth.SignOut()}>로그아웃</div>
+                    :
+                    <Link className='header-right__option' to='/sign'>로그인</Link>
+                }
+                
             </div>
         </div>
     );
 }
 
-export default Header;
+const mapStateToProps= createStructuredSelector({
+    currentUser: selectCurrentUser,
+});
+
+export default connect(mapStateToProps)(Header);

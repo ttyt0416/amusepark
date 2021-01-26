@@ -1,9 +1,12 @@
 import React from 'react';
-import './signinpage.style.scss';
+import './signin.style.scss';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utility';
 
 import { Link } from 'react-router-dom';
+
+import CustomButton from '../custom-button/custom-button.components';
+import FormInput from '../form-input/form-input.components';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -39,8 +42,18 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <>
-            </>
+            <div className='signin'>
+                <div className='signin__text'>로그인</div>
+
+                <form onSubmit={this.handleSubmit}>
+                    <FormInput name="email" type="email" handleChange={this.handleChange} value={this.state.email} label="이메일" required />
+                    <FormInput name="password" type="password" value={this.state.password} handleChange={this.handleChange} label="비밀번호" required />
+                    <div className='signin__buttons'>
+                        <CustomButton type="submit"> 로그인</CustomButton>
+                        <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn> 구글로 로그인</CustomButton>
+                    </div>                   
+                </form>
+            </div>
         );
     };
 }

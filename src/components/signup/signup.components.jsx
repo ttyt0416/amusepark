@@ -55,7 +55,7 @@ class SignUp extends React.Component {
         return(
             <div className='signup'>
             <div className='signup__text'>회원가입</div>
-            <form classname='signup__form' onSubmit={this.handleSubmit}>
+            <form className='signup__form' onSubmit={this.handleSubmit}>
                 <FormInput
                 type='text'
                 name='displayName'

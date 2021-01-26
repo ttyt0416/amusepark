@@ -5,6 +5,7 @@ import 'firebase/auth';
 const config = {
     apiKey: "AIzaSyC5oDUXCPzEIAb8zXlwp1FO4t3i9-FrTBA",
     authDomain: "amusepark-6ffc4.firebaseapp.com",
+    databaseURL: "http://amusepark-6ffc4.firebaseio.com",
     projectId: "amusepark-6ffc4",
     storageBucket: "amusepark-6ffc4.appspot.com",
     messagingSenderId: "674227119945",

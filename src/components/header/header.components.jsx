@@ -36,7 +36,7 @@ const Header = ({ currentUser }) => {
             <div className='header-right'>
                 {
                     currentUser ?
-                    <div className='header-right__option' onClick={() => auth.SignOut()}>로그아웃</div>
+                    <div className='header-right__option' onClick={() => auth.signOut()}>로그아웃</div>
                     :
                     <Link className='header-right__option' to='/sign'>로그인</Link>
                 }
@@ -47,7 +47,7 @@ const Header = ({ currentUser }) => {
 }
 
 const mapStateToProps= createStructuredSelector({
-    currentUser: selectCurrentUser,
+    currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(Header);

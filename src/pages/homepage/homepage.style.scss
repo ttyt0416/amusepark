@@ -1,7 +1,9 @@
 .homepage{
     position: absolute;
     width: 100%;
-    height: 90%; 
+    height: 90%;
+    margin-top: 5rem;
+    z-index: -1; 
 
     &__image{
         width: inherit;

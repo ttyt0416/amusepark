@@ -26,10 +26,10 @@ const Header = ({ currentUser }) => {
                 <Link className='header-left__option' to='/amuse'>
                     즐길거리
                 </Link>
-                <Link className='header-left__option' to='social'>
+                <Link className='header-left__option' to='/social'>
                     소식함
                 </Link>
-                <Link className='header-left__option' to='communicate'>
+                <Link className='header-left__option' to='/communicate'>
                     소통함
                 </Link>
             </div>

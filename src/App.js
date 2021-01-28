@@ -10,6 +10,7 @@ import Footer from './components/footer/footer.components';
 
 
 import HomePage from './pages/homepage/homepage.components';
+import AmusePage from './pages/amusepage/amusepage.components';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
+        <Route exact path='/amuse' component={AmusePage} />
       </Switch>
       <Footer />
     </div>

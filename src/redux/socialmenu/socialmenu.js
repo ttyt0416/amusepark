@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const socialMenu = {
     sections: [
         {
             title: 'event',
@@ -18,11 +18,4 @@ const INITIAL_STATE = {
     ]
 }
 
-const socialSideReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
-
-export default socialSideReducer;
+export default socialMenu;

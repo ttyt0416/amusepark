@@ -1,60 +1,41 @@
 import React from 'react';
 import './sidemenu.style.scss';
 
-import _ from 'lodash';
+import actionCreators from '../../redux/store';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
-import { selectAmuseSideSections } from '../../redux/amuseside/amuseside.selectors';
-import { selectCommuniSideSections } from '../../redux/communiside/communiside.selectors';
-import { selectInfoSideSections } from '../../redux/infoside/infoside.selectors';
-import { selectSocialSideSections } from '../../redux/socialside/socialside.selectors';
+import { useParams } from 'react-router-dom';
 
 import MenuItem from '../menuitem/menuitem.components';
 
-
-const SideMenu = ({ amuse, communi, info, social, match }) => {
-
-    const changer = _.defaultTo(match.params, '');
-    const sideChanger = (changer) => {
-        switch(changer){
-            case 'amuse': return (
-                amuse.map(({ id, ...otherSectionProps }) => (
-                    <MenuItem key={id} {...otherSectionProps} />
-                ))
-            )
-            case 'communi': return (
-                communi.map(({ id, ...otherSectionProps }) => (
-                    <MenuItem key={id} {...otherSectionProps} />
-                ))
-            )
-            case 'info': return (
-                info.map(({ id, ...otherSectionProps }) => (
-                    <MenuItem key={id} {...otherSectionProps} />
-                ))
-            )
-            case 'social': return (
-                social.map(({ id, ...otherSectionProps }) => (
-                    <MenuItem key={id} {...otherSectionProps} />
-                ))
-            )
-            default: return null
-        }
-    }
+const sideMenu = ({ state, callAmuse, callCommuni, callInfo, callSocial }) => {
+    const url = useParams();
+    switch (url) {
+        case 'amuse': callAmuse;
+        case 'communi': callCommuni;
+        case 'info': callInfo;
+        case 'social': callSocial;
+        default: state;
+    };
 
     return (
-        <div className='sidemenu'>
-            {sideChanger(changer)}
-        </div>
+        state.map(({ id, ...otherSectionProps}) => (
+            <MenuItem key={id} {...otherSectionProps} />
+        ))
     )
-};
+    
+}
 
-const mapStateToProps = createStructuredSelector({
-    amuse: selectAmuseSideSections,
-    communi: selectCommuniSideSections,
-    info: selectInfoSideSections,
-    social: selectSocialSideSections
-})
+const mapStateToProps = () => {
+    return { state: state };
+}
 
-export default connect(mapStateToProps)(SideMenu);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        callAmuse: dispatch(actionCreators.callAmuse),
+        callCommuni: dispatch(actionCreators.callCommuni),
+        callInfo: dispatch(actionCreators.callInfo),
+        callSocial: dispatch(actionCreators.callSocial)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(sideMenu);

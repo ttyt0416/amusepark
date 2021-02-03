@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const communiMenu = {
     sections: [
         {
             title: 'suggest',
@@ -13,11 +13,4 @@ const INITIAL_STATE = {
     ]
 }
 
-const communiSideReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
-
-export default communiSideReducer;
+export default communiMenu;

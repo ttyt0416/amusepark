@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const amuseMenu = {
     sections: [
         {
             title: 'amusement',
@@ -19,15 +19,8 @@ const INITIAL_STATE = {
             title: 'souvenir',
             linkUrl: 'amuse/souvenir',
             id: 4
-        },
+        }
     ]
 }
 
-const amuseSideReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
-
-export default amuseSideReducer;
+export default amuseMenu;

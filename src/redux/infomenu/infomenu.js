@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const infoMenu = {
     sections: [
         {
             title: 'guide',
@@ -23,11 +23,4 @@ const INITIAL_STATE = {
     ]
 }
 
-const infoSideReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
-
-export default infoSideReducer;
+export default infoMenu;

@@ -1,13 +1,61 @@
-import { createStore, applyMiddleware } from 'redux';
-import { persistStore } from 'redux-persist';
-import logger from 'redux-logger';
+import { createStore } from 'redux';
 
-import rootReducer from './root-reducer';
+import amuseMenu from './amusemenu/amusemenu';
+import communiMenu from './communimenu/communimenu';
+import infoMenu from './infomenu/infomenu';
+import socialMenu from './socialmenu/socialmenu';
 
-const middlewares = [logger];
+const AMUSE = 'AMUSE';
+const COMMUNI = 'COMMUNI';
+const INFO = 'INFO';
+const SOCIAL = 'SOCIAL';
 
-export const store = createStore(rootReducer, applyMiddleware(...middlewares));
+const callAmuse = () => {
+    return {
+        type: AMUSE
+    };
+};
 
-export const persistor = persistStore(store);
+const callCommuni= () => {
+    return {
+        type: COMMUNI
+    };
+};
 
-export default { store, persistor };
+const callInfo = () => {
+    return {
+        type: INFO
+    };
+};
+
+const callSocial = () => {
+    return {
+        type: SOCIAL
+    };
+};
+
+const reducer = (state = [], action) => {
+    switch (action.type) {
+        case AMUSE :
+            return amuseMenu.sections;
+        case COMMUNI :
+            return communiMenu.sections;
+        case INFO :
+            return infoMenu.sections;
+        case SOCIAL :
+            return socialMenu.sections;
+        default :
+            return state;
+    }
+}
+
+export const actionCreators = {
+    callAmuse,
+    callCommuni,
+    callInfo,
+    callSocial
+};
+
+const store = createStore(reducer);
+
+export default store;

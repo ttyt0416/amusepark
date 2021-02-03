@@ -3,39 +3,54 @@ import './sidemenu.style.scss';
 
 import actionCreators from '../../redux/store';
 
+import { connect } from 'react-redux';
+
 import { useParams } from 'react-router-dom';
 
 import MenuItem from '../menuitem/menuitem.components';
 
-const sideMenu = ({ state, callAmuse, callCommuni, callInfo, callSocial }) => {
+const SideMenu = ({ state, Amuse, Communi, Info, Social }) => {
     const url = useParams();
     switch (url) {
-        case 'amuse': callAmuse;
-        case 'communi': callCommuni;
-        case 'info': callInfo;
-        case 'social': callSocial;
-        default: state;
+        case 'amuse': 
+            return (
+                Amuse.map(({ id, ...otherSectionProps}) => (
+                    <MenuItem key={id}{...otherSectionProps} />
+                ))
+            )
+        case 'communi':
+            return (
+                Communi.map(({ id, ...otherSectionProps}) => (
+                    <MenuItem key={id}{...otherSectionProps} />
+                ))
+            )
+        case 'info':
+            return (
+                Info.map(({ id, ...otherSectionProps}) => (
+                    <MenuItem key={id}{...otherSectionProps} />
+                ))
+            )
+        case 'social':
+            return (
+                Social.map(({ id, ...otherSectionProps}) => (
+                    <MenuItem key={id}{...otherSectionProps} />
+                ))
+            ) 
+        default: return(state);
     };
-
-    return (
-        state.map(({ id, ...otherSectionProps}) => (
-            <MenuItem key={id} {...otherSectionProps} />
-        ))
-    )
-    
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
     return { state: state };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        callAmuse: dispatch(actionCreators.callAmuse),
-        callCommuni: dispatch(actionCreators.callCommuni),
-        callInfo: dispatch(actionCreators.callInfo),
-        callSocial: dispatch(actionCreators.callSocial)
+        Amuse: () => dispatch(actionCreators.callAmuse),
+        Communi: () => dispatch(actionCreators.callCommuni),
+        Info: () => dispatch(actionCreators.callInfo),
+        Social: () => dispatch(actionCreators.callSocial)
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(sideMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

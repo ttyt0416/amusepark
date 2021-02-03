@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+//import logger from 'redux-logger';
 
 import amuseMenu from './amusemenu/amusemenu';
 import communiMenu from './communimenu/communimenu';
@@ -34,7 +35,7 @@ const callSocial = () => {
     };
 };
 
-const reducer = (state = [], action) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case AMUSE :
             return amuseMenu.sections;
@@ -49,12 +50,16 @@ const reducer = (state = [], action) => {
     }
 }
 
+//const middlewares = [logger];
+
 export const actionCreators = {
     callAmuse,
     callCommuni,
     callInfo,
     callSocial
 };
+
+//export const store = createStore(reducer, applyMiddleware(...middlewares));
 
 const store = createStore(reducer);
 

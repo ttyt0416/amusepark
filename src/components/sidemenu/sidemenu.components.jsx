@@ -1,56 +1,32 @@
 import React from 'react';
 import './sidemenu.style.scss';
 
-import actionCreators from '../../redux/store';
-
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectAmusemenuSections } from '../../redux/amusemenu/amusemenu.selector';
+import { selectCommunimenuSections } from '../../redux/communimenu/communimenu.selector';
+import { selectInfomenuSections } from '../../redux/infomenu/infomenu.selector';
+import { selectSocialmenuSections } from '../../redux/socialmenu/socialmenu.selector';
 
 import { useParams } from 'react-router-dom';
 
 import MenuItem from '../menuitem/menuitem.components';
 
-const SideMenu = ({ state, Amuse, Communi, Info, Social }) => {
+const SideMenu = ({ amusemenu }) => {
     const url = useParams();
-    switch (url) {
-        case 'amuse': 
-            return (
-                Amuse.map(({ id, ...otherSectionProps}) => (
-                    <MenuItem key={id}{...otherSectionProps} />
-                ))
-            )
-        case 'communi':
-            return (
-                Communi.map(({ id, ...otherSectionProps}) => (
-                    <MenuItem key={id}{...otherSectionProps} />
-                ))
-            )
-        case 'info':
-            return (
-                Info.map(({ id, ...otherSectionProps}) => (
-                    <MenuItem key={id}{...otherSectionProps} />
-                ))
-            )
-        case 'social':
-            return (
-                Social.map(({ id, ...otherSectionProps}) => (
-                    <MenuItem key={id}{...otherSectionProps} />
-                ))
-            ) 
-        default: return(state);
-    };
+
+    return (
+        <div className='sidemenu'>
+            {amusemenu.map(({ id, ...otherSectionProps }) => (
+                <MenuItem key={id} {...otherSectionProps} />
+            ))}
+        </div>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return { state: state };
-}
+const mapStateToProps = createStructuredSelector({
+    amusemenu: selectAmusemenuSections
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        Amuse: () => dispatch(actionCreators.callAmuse),
-        Communi: () => dispatch(actionCreators.callCommuni),
-        Info: () => dispatch(actionCreators.callInfo),
-        Social: () => dispatch(actionCreators.callSocial)
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
+export default connect(mapStateToProps)(SideMenu);

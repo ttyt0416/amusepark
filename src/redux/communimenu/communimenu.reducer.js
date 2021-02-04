@@ -1,4 +1,4 @@
-const communiMenu = {
+const communimenu = {
     sections: [
         {
             title: 'suggest',
@@ -13,4 +13,11 @@ const communiMenu = {
     ]
 }
 
-export default communiMenu;
+const communimenuReducer = (state = communimenu, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+export default communimenuReducer;

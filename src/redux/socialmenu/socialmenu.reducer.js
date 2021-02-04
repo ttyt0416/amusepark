@@ -1,4 +1,4 @@
-const socialMenu = {
+const socialmenu = {
     sections: [
         {
             title: 'event',
@@ -18,4 +18,11 @@ const socialMenu = {
     ]
 }
 
-export default socialMenu;
+const socialmenuReducer = (state = socialmenu, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+export default socialmenuReducer;

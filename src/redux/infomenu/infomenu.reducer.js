@@ -1,4 +1,4 @@
-const infoMenu = {
+const infomenu = {
     sections: [
         {
             title: 'guide',
@@ -23,4 +23,11 @@ const infoMenu = {
     ]
 }
 
-export default infoMenu;
+const infomenuReducer = (state = infomenu, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+export default infomenuReducer;

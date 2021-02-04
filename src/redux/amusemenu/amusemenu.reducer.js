@@ -1,4 +1,4 @@
-const amuseMenu = {
+const amusemenu = {
     sections: [
         {
             title: 'amusement',
@@ -23,4 +23,11 @@ const amuseMenu = {
     ]
 }
 
-export default amuseMenu;
+const amusemenuReducer = (state = amusemenu, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+export default amusemenuReducer;

@@ -6,8 +6,8 @@ import infomenuReducer from './infomenu/infomenu.reducer';
 import socialmenuReducer from './socialmenu/socialmenu.reducer';
 
 export default combineReducers({
-    amuse: amusemenuReducer,
-    communi: communimenuReducer,
-    info: infomenuReducer,
-    social: socialmenuReducer
+    amusemenu: amusemenuReducer,
+    communimenu: communimenuReducer,
+    infomenu: infomenuReducer,
+    socialmenu: socialmenuReducer
 });

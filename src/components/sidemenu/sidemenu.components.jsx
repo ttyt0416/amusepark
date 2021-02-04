@@ -9,24 +9,61 @@ import { selectCommunimenuSections } from '../../redux/communimenu/communimenu.s
 import { selectInfomenuSections } from '../../redux/infomenu/infomenu.selector';
 import { selectSocialmenuSections } from '../../redux/socialmenu/socialmenu.selector';
 
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import MenuItem from '../menuitem/menuitem.components';
 
-const SideMenu = ({ amusemenu }) => {
-    const url = useParams();
+const SideMenu = ({ amusemenu, communimenu, infomenu, socialmenu, state }) => {
+    const his = useHistory();
+    const url = his.location.pathname;
+    //console.log(typeof(url));
 
-    return (
-        <div className='sidemenu'>
-            {amusemenu.map(({ id, ...otherSectionProps }) => (
-                <MenuItem key={id} {...otherSectionProps} />
-            ))}
-        </div>
-    )
+    switch (url) {
+        case "/amuse" :
+            return(
+                <div className='sidemenu'>
+                    {amusemenu.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))}
+                </div>
+            )
+        case "/communicate" :
+            return(
+                <div className='sidemenu'>
+                    {communimenu.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))}
+                </div>
+            )
+        case "/info" :
+            return(
+                <div className='sidemenu'>
+                    {infomenu.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))}
+                </div>
+            )
+        case "/social" :
+            return(
+                <div className='sidemenu'>
+                    {socialmenu.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))}
+                </div>
+            )
+        default :
+            return(
+                state
+            )
+    }
+
 }
 
 const mapStateToProps = createStructuredSelector({
-    amusemenu: selectAmusemenuSections
+    amusemenu: selectAmusemenuSections,
+    communimenu: selectCommunimenuSections,
+    infomenu: selectInfomenuSections,
+    socialmenu: selectSocialmenuSections
 });
 
 export default connect(mapStateToProps)(SideMenu);
